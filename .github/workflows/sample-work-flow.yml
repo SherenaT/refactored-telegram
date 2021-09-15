@@ -1,0 +1,17 @@
+name: sample-work-flow
+on: [push]
+jobs:
+  explore-first-github-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "the job was automatically triggered by a ${{github.event_name}} event"
+      - run: echo "the job is now running on a ${{runner.os}} server hosted by GitHub!"
+      - run: echo "the name of your branch is ${{github.ref}} and your repository is ${{github.repository}}."
+      - name: check out repository code
+        uses: actions/checkut@vs
+      - run: echo "the ${{github.repository}} repository has been cloned to the runner."
+      - run: echo "the workflow is not ready to test your code runner."
+      - name: list files in the repository
+      run: |
+        ls  ${{github.workspace}}
+      - run: echo "this job status is ${{job.status}}"
